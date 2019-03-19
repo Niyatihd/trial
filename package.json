@@ -1,0 +1,32 @@
+{
+  "name": "JavascriptProject",
+  "version": "1.0.0",
+  "description": "Overview",
+  "private": true,
+  "scripts": {
+    "start": "webpack --watch --mode=development",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Niyatihd/JavascriptProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Niyatihd/JavascriptProject/issues"
+  },
+  "homepage": "https://github.com/Niyatihd/JavascriptProject#readme",
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  },
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-loader": "^8.0.5",
+    "lodash": "^4.17.11"
+  }
+}

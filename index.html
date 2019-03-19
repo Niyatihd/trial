@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Getting Started</title>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <iframe src="silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body id="t-body">
+  <script>
+    function play() {
+      var audio = document.getElementById("dino");
+      audio.play();
+    }
+  </script>
+  
+  <img src="bg1.jpeg" alt="bg">
+  <audio id="dino">
+    <source src="dino.flac">
+  </audio>
+  <audio id="player" autoplay>
+    <source src="audio/source.mp3" type="audio/mp3">
+  </audio>
+  <div class="main">
+    <div class="left-panel">
+      <audio class="animated slideInLeft" controls autoplay loop>
+        <source src="jp.mp3" type="audio/mpeg">
+      </audio>
+      <button onclick="" class="animated slideInLeft" id="gameDirections">How to Play</button>
+    </div>
+    <div class="tetris-canvas">
+      <canvas width="300" height="600" style="border: 5px solid grey" id="canvas"></canvas> 
+    </div>
+    <div class="right-panel animated slideInRight">
+      <div id="score">Score:</div>
+      <div id="next-tetrad" class="animated slideInRight">
+        <span>Next Tetrad</span>
+        <canvas width="120" height="120" style="border: 5px solid grey" id="canvas-next-tetrad"></canvas>
+      </div>
+      <button type="button" onClick="window.location.reload();">Restart</button>
+      <div class="game-name">
+        <span>TETRI-SAURUS</span>
+      </div>
+    </div>
+  </div>
+<script type="text/javascript">
+  var rx = 1200;
+  var ry = 150;
+
+  var svg = d3.select("body")
+    .append("svg")
+    .attr("id", "dog");
+
+  var divtoclick = d3.select("#t-body");
+
+  divtoclick.on("click", function () {
+      play();
+      for (var i = 1; i < 12; ++i) {
+        var position = d3.mouse(svg.node());
+
+        var circle = svg.append("ellipse")
+          .attr("cx", 730)
+          .attr("cy", 150)
+          .attr("rx", 0)
+          .attr("ry", 0)
+          .style("stroke-width", 5 / (i))
+          .transition()
+          .delay(Math.pow(i, 1.0) * 100)
+          .duration(2000)
+          .ease('quad-in')
+          .attr("rx", rx)
+          .style("stroke-opacity", 0)
+          .attr("ry", ry)
+          .style("stroke-opacity", 0)
+          .each("end", function () {
+            d3.select(this).remove();
+          });
+      }
+    });
+</script>
+  <script src="main.js"></script>
+</body>
+
+</html>
